@@ -1,0 +1,5 @@
+mixin social-icon({ images=[],}={})
+    .social
+        each item in images
+            a.social__link(href=item.href)
+                img(alt= item.name src=item.src)

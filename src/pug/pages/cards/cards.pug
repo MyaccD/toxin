@@ -1,0 +1,57 @@
+extends ../../layout/default-ui-kit.pug
+
+block variables
+    - pageTitle = 'Cards'
+
+block content
+    
+    include ../../ui-kit/selection/selection.pug
+    include ../../ui-kit/registration/registration.pug
+    include ../../ui-kit/armor-form/armor-form.pug
+    include ../../ui-kit/sign-in/sign-in.pug
+    include ../../ui-kit/room-preview/room-preview.pug
+
+    .container-cards
+        .container-cards-flex
+            .container-cards-flex__column
+                .container-cards-flex__row.selection
+                    +selection({
+                        titleText: 'Найдем номера под ваши пожелания',
+                        })
+                .container-cards-flex__row.registration
+                    +registration-form({
+                        titleText: 'Регистрация аккаунта',
+                    })
+            .container-cards-flex-column
+                .container-cards-flex__row.armor
+                    +armor-form
+                .container-cards-flex__row.sign-in
+                    +sign-in
+            .container-cards-flex-column
+                .container-cards-flex__row.card-preview
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room888.jpg', alt: 'room888'},
+                            {src: './img/room888.jpg', alt: 'room888'},
+                            {src: './img/room888.jpg', alt: 'room888'},
+                        ],
+                        dataRating: 5,
+                        dataReadonly: true,
+                    })
+                .container-cards-flex__row.card-preview
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room840.jpg', alt: 'room840'},
+                            {src: './img/room840.jpg', alt: 'room840'},
+                            {src: './img/room840.jpg', alt: 'room840'},
+                        ],
+                        orderId: ' 840', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '9 900', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 4,
+                        dataReadonly: true,
+                        reviewsNumber: '65', 
+                        reviewsText: ' Отзывов', 
+                    })

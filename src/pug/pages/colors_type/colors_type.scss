@@ -1,0 +1,57 @@
+.content-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    font-family: $titleFont;
+    margin-top: 67px;
+    margin-left: 150px;
+    margin-right: 191px;
+
+    .flex-left {
+        width: 290px;
+        
+        &__item {
+            display: flex;
+            flex-wrap: wrap;
+            font-size: $font-size--medium;
+            line-height: 29px;
+            color: $dark-shade;
+
+            &:not(:first-child) {
+                margin-top: 20px;    
+            }
+
+            
+            .dark-shade {
+                background-color: $dark-shade;
+            }
+            .dark-shade-light {
+                background-color: $dark-shade--light;
+            }
+            .dark-shade-lighten {
+                background-color: $dark-shade--lighten;
+            }
+            .dark-shade-lightest {
+                background-color: $dark-shade--lightest;
+            }
+            .dark-shade-white {
+                background-color: $dark-shade--white;
+            }
+            .main-color-purple {
+                background-color: $purple;
+            }
+            .main-color-green {
+                background-color: $green;
+            }
+            
+            
+        }
+    }
+    .flex-right {
+        width: 403px;
+        &__item {
+            display: flex;
+            margin-bottom: 50px;            
+        }
+    }
+}

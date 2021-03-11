@@ -1,0 +1,14 @@
+include ../material-icons/material-icons.pug
+
+mixin menu({ elementsMenu=[], }={})
+     
+    nav
+        ul.menu
+            each elem in elementsMenu
+                li.menu__item
+                    if elem.submenu
+                        a.menu__item-link( href= elem.href title= elem.name) #{elem.name}
+                            i.material-icons expand_more
+                    else
+                        a.menu__item-link(href= elem.href title= elem.name) #{elem.name} 
+

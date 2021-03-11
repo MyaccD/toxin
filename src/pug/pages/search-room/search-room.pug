@@ -1,0 +1,324 @@
+extends ../../layout/default.pug
+
+block variables
+    - var pageTitle = 'Search room'
+
+include ../../ui-kit/header-block/header-block.pug
+include ../../ui-kit/filter-date-dropdown/filter-date-dropdown.pug
+include ../../ui-kit/dropdown/dropdown.pug
+include ../../ui-kit/range-slider/range-slider.pug
+include ../../ui-kit/checkbox-buttons/checkbox-buttons.pug
+include ../../ui-kit/rich-checkbox-button/rich-checkbox-button.pug
+include ../../ui-kit/checkbox-list/checkbox-list.pug
+include ../../ui-kit/room-preview/room-preview.pug
+include ../../ui-kit/pagination/pagination.pug
+
+block content
+    main.search-room
+        .search-room__inner
+            article.search-room__side-bar
+                form.search-room__form(action="")
+                    section.search-room__filter-date-container
+                        .search-room__filter-date
+                            +filter-date-dropdown({
+                                firstHeaderTitle: 'даты пребывания в отеле',
+                            })
+                    section.search-room__dropdown-container
+                        .search-room__dropdown-header
+                            +header-block({
+                                title: 'гости',
+                            })
+                        .search-room__dropdown
+                            +dropdown({
+                                elems: [
+                                    {name: 'Взрослые', value: 0},
+                                    {name: 'Дети', value: 0},
+                                    {name: 'Младенцы', value: 0},
+
+                                ],
+                                classItem: 'dropdown-number-of-guests',
+                                dataName: 'guests',
+                                buttonsShow: true
+                            })   
+                    section.search-room__range-slider-container
+                        .search-room__range-slider
+                            +range-slider({  
+                                type: 'double', 
+                                min: 1000, 
+                                max: 15000, 
+                                step: 1, 
+                                from: 5000, 
+                                to: 10000,
+                                headerTitle: 'диапазон цены',
+                            })
+                        p.search-room__range-slider-description
+                            | Стоимость за сутки пребывания в номере
+                    section.search-room__checkbox-buttons-container
+                        .search-room__checkbox-buttons-header
+                            +header-block({
+                                title: 'Checkbox Buttons',
+                            })
+                        .search-room__checkbox-buttons
+                            +checkbox-buttons({
+                                listButtons: [
+                                    {name: 'Можно курить', check: false},
+                                    {name: 'Можно с питомцами', check: true},
+                                    {name: 'Можно пригласить гостей (до 10 человек)', check: true}
+                                ]
+                            })
+                    section.search-room__rich-checkbox-button-container
+                        .search-room__rich-checkbox-button-header
+                            +header-block({
+                                title: 'доступность',
+                            })
+                        .search-room__rich-checkbox-button
+                            +rich-checkbox-button({
+                                richCheckboxButton: [
+                                    {richTitle: 'Широкий коридор', richText: 'Ширина коридоров в номере не менее 91 см.'},
+                                    {richTitle: 'Помощник для инвалидов', richText: 'На 1 этаже вас встретит специалист  и проводит до номера.'}
+                                ]
+                            })
+                    section.search-room__dropdown-comfort-container
+                        .search-room__dropdown-comfort-header
+                            +header-block({
+                                title: 'удобства номера',
+                            })
+                        .search-room__dropdown-comfort
+                            +dropdown({
+                                titleText: '2 спальни, 2 кровати...',
+                                elems: [
+                                    {name: 'Спальни', value: 2, classActive: 'js-minus-active'},
+                                    {name: 'Комнаты', value: 2, classActive: 'js-minus-active'},
+                                    {name: 'Ванные комнаты', value: 0},
+
+                                ],
+                                classItem: 'dropdown-room-amenities',
+                                dataName: 'rooms',
+                                buttonsShow: false
+                            })
+                    section.search-room__checkbox-list-container
+                        .search-room__checkbox-list
+                            +checkbox-list({
+                                title: 'дополнительные удобства',
+                                menuList: [
+                                    {name: 'Завтрак', check: false},
+                                    {name: 'Письменный стол', check: true},
+                                    {name: 'Стул для кормления', check: true},
+                                    {name: 'Кроватка', check: true},
+                                    {name: 'Телевизор', check: false},
+                                    {name: 'Шампунь', check: false},
+                                    {name: 'Телевизор', check: false},
+                                    {name: 'Шампунь', check: false},
+                                ],
+                            })
+            article.search-room__rooms-list
+                header.search-room__title
+                    h1.text-large
+                        |Номера, которые мы для вас подобрали
+                article.search-room__elements
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room888.jpg', alt: 'room888'},
+                            {src: './img/room888.jpg', alt: 'room888'},
+                            {src: './img/room888.jpg', alt: 'room888'},
+                            {src: './img/room888.jpg', alt: 'room888'},
+                        ],
+                        dataRating: 5,
+                        dataReadonly: true,
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room840.jpg', alt: 'room840'},
+                            {src: './img/room840.jpg', alt: 'room840'},
+                            {src: './img/room840.jpg', alt: 'room840'},
+                            {src: './img/room840.jpg', alt: 'room840'},
+                        ],
+                        orderId: ' 840', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '9 900', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 4,
+                        dataReadonly: true,
+                        reviewsNumber: '65', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room980.jpg', alt: 'room980'},
+                            {src: './img/room980.jpg', alt: 'room980'},
+                            {src: './img/room980.jpg', alt: 'room980'},
+                            {src: './img/room980.jpg', alt: 'room980'},
+                        ],
+                        orderId: ' 980', 
+                        orderLuxury: ' люкс', 
+                        pricePerDayNumber: '8 500', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 3,
+                        dataReadonly: true,
+                        reviewsNumber: '35', 
+                        reviewsText: ' Отзывов', 
+                    })                    
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room856.jpg', alt: 'room856'},
+                            {src: './img/room856.jpg', alt: 'room856'},
+                            {src: './img/room856.jpg', alt: 'room856'},
+                            {src: './img/room856.jpg', alt: 'room856'},
+                        ],
+                        orderId: ' 856', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '7 300', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 5,
+                        dataReadonly: true,
+                        reviewsNumber: '19', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room740.jpg', alt: 'room740'},
+                            {src: './img/room740.jpg', alt: 'room740'},
+                            {src: './img/room740.jpg', alt: 'room740'},
+                            {src: './img/room740.jpg', alt: 'room740'},
+                        ],
+                        orderId: ' 740', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '6 000', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 4,
+                        dataReadonly: true,
+                        reviewsNumber: '44', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room982.jpg', alt: 'room982'},
+                            {src: './img/room982.jpg', alt: 'room982'},
+                            {src: './img/room982.jpg', alt: 'room982'},
+                            {src: './img/room982.jpg', alt: 'room982'},
+                        ],
+                        orderId: ' 982', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 800', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 3,
+                        dataReadonly: true,
+                        reviewsNumber: '56', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room678.jpg', alt: 'room678'},
+                            {src: './img/room678.jpg', alt: 'room678'},
+                            {src: './img/room678.jpg', alt: 'room678'},
+                            {src: './img/room678.jpg', alt: 'room678'},
+                        ],
+                        orderId: ' 678', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 500', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 5,
+                        dataReadonly: true,
+                        reviewsNumber: '45', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room450.jpg', alt: 'room450'},
+                            {src: './img/room450.jpg', alt: 'room450'},
+                            {src: './img/room450.jpg', alt: 'room450'},
+                            {src: './img/room450.jpg', alt: 'room450'},
+                        ],
+                        orderId: ' 450', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 300', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 4,
+                        dataReadonly: true,
+                        reviewsNumber: '39', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room350.jpg', alt: 'room350'},
+                            {src: './img/room350.jpg', alt: 'room350'},
+                            {src: './img/room350.jpg', alt: 'room350'},
+                            {src: './img/room350.jpg', alt: 'room350'},
+                        ],
+                        orderId: ' 350', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 000', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 3,
+                        dataReadonly: true,
+                        reviewsNumber: '77', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room666.jpg', alt: 'room666'},
+                            {src: './img/room666.jpg', alt: 'room666'},
+                            {src: './img/room666.jpg', alt: 'room666'},
+                            {src: './img/room666.jpg', alt: 'room666'},
+                        ],
+                        orderId: ' 666', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 000', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 5,
+                        dataReadonly: true,
+                        reviewsNumber: '25', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room444.jpg', alt: 'room444'},
+                            {src: './img/room444.jpg', alt: 'room444'},
+                            {src: './img/room444.jpg', alt: 'room444'},
+                            {src: './img/room444.jpg', alt: 'room444'},
+                        ],
+                        orderId: ' 444', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 000', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 3,
+                        dataReadonly: true,
+                        reviewsNumber: '15', 
+                        reviewsText: ' Отзывов', 
+                    })
+                    +room-preview({
+                        sliders: [
+                            {src: './img/room352.jpg', alt: 'room352'},
+                            {src: './img/room352.jpg', alt: 'room352'},
+                            {src: './img/room352.jpg', alt: 'room352'},
+                            {src: './img/room352.jpg', alt: 'room352'},
+                        ],
+                        orderId: ' 352', 
+                        orderLuxury: '', 
+                        pricePerDayNumber: '5 000', 
+                        currency:  '₽', 
+                        inDay:  ' в сутки', 
+                        dataRating: 3,
+                        dataReadonly: true,
+                        reviewsNumber: '55', 
+                        reviewsText: ' Отзывов', 
+                    })
+            section.search-room__pagination               
+                +pagination({
+                    links: [
+                        {href: 'mock-address/change-me', number: 1, isActive: true },
+                        {href: 'mock-address/change-me', number: 2 },
+                        {href: 'mock-address/change-me', number: 3 },
+                        {href: 'mock-address/change-me', number: 15 },
+                    ]
+                })

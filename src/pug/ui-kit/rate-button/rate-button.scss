@@ -1,0 +1,31 @@
+.rate-button {
+
+    .br-theme-css-stars {
+
+        .br-widget {
+
+            a {
+                width: 24px;
+                height: 24px;
+                font-family: $MaterialIcons;
+                font-size: $font-size--big;
+                line-height: 20px;
+                margin-right: 0;
+                color: $purple;   
+            }
+            a:after {
+                content: "star_border";
+                color: $purple;
+            }
+            a.br-active:after {
+                content: "star";
+                color: $purple;
+            }
+            a.br-selected:after {
+                content: "star";
+                color: $purple;
+            }
+        }
+    }
+    
+}

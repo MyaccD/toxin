@@ -1,0 +1,26 @@
+include ../logo/logo.pug
+include ../footer-menu/footer-menu.pug
+include ../subscription-text-field/subscription-text-field.pug
+include ../../ui-kit/footer-creative/footer-creative.pug
+
+mixin footer({ hrefLogo, elementsFooter, text, subscribeTitle, subscribeText, }={})
+    footer.footer
+        .footer__inner
+            .footer-flex
+                .footer-flex__col.footer-flex__logo
+                    +logo({ hrefLogo, })
+                    .footer-flex__logo-text 
+                        p= text
+                .footer-flex__col.footer-flex__menu
+                    +footerMenu({
+                        elementsFooter: elementsFooter,
+                    })
+                .footer-flex__col.footer-flex__menu.footer-flex__none
+                    +footer-creative({
+                text: 'Copyright © 2018 Toxin отель. Все права зачищены.'
+            })
+                .footer-flex__col.footer-flex__subscribe
+                    .footer__title= subscribeTitle
+                    .footer__text= subscribeText                    
+                    form.footer__form(action="" method="get")
+                        +subscription-text-field({type: 'email', name: 'subscribe-email', placeholder: 'Email',})

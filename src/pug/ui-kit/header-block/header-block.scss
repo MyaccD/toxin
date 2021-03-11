@@ -1,0 +1,29 @@
+.header-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;    
+    padding-bottom: 5px;
+    line-height: 15px;
+    text-transform: uppercase;  
+
+    &__title {
+        font-family: $mainFont;   
+        font-weight: bold;
+        color: $dark-shade;
+        font-size: $font-size--small;     
+    }
+    &__text {
+        font-family: $mainFont;
+        font-size: $font-size--small;  
+        color: $dark-shade--lighten;
+    }
+    &__small {
+        max-width: 150px;
+    }
+    &__title-font-page-medium {
+        font-size: $font-size--medium;
+        line-height: 24px;
+        text-transform: none;
+    }
+}

@@ -1,0 +1,66 @@
+extends ../../layout/default-ui-kit.pug
+
+block variables
+    - var pageTitle = 'Header & Footer'
+
+block content
+    include ../../ui-kit/header-page/header-page.pug
+    include ../../ui-kit/logo/logo.pug
+    include ../../ui-kit/nav-menu/nav-menu.pug
+    include ../../ui-kit/header-btn/header-btn.pug
+    include ../../ui-kit/footer/footer.pug
+    include ../../ui-kit/copyright-bar/copyright-bar.pug
+    include ../../ui-kit/footer-creative/footer-creative.pug
+    
+
+    .header-footer-menu.header-footer-menu-header.header-footer-menu-shadow
+        .header-footer-menu-inner
+            +header-page({
+                elementsMenu: [
+                    { name: 'О нас', href: '#', },
+                    { name: 'Услуги', href: '#', 'submenu': true, },
+                    { name: 'Вакансии', href: '#', },
+                    { name: 'Новости', href: '#', },
+                    { name: 'Соглашения', href: '#','submenu': true, },
+                ],
+                btnNameLogin: 'Войти',
+                btnNameRegister: 'Зарегистрироваться',
+            })
+    .header-footer-menu.header-footer-menu-header.header-footer-menu-shadow
+        .header-footer-menu-inner
+            +header-page({
+                elementsMenu: [
+                    { name: 'О нас', href: '#', },
+                    { name: 'Услуги', href: '#', 'submenu': true, },
+                    { name: 'Вакансии', href: '#', },
+                    { name: 'Новости', href: '#', },
+                    { name: 'Соглашения', href: '#', 'submenu': true, },
+                ],
+                register: true,
+                userName: 'Юлий Цезарь',
+            })
+    .header-footer-menu
+        .header-footer-menu-inner
+            +footer({
+                elementsFooter: [
+                    {name: 'Навигация', list: ['О нас', 'Новости', 'Служба поддержки', 'Услуги']},
+                    {name: 'О нас', list: ['О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы']},
+                    {name: 'Служба поддержки', list: ['Соглашения', 'Сообщества', 'Связь с нами']},
+                ],
+                text: 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации "Отельные взгляды"',
+                subscribeTitle: 'Подписка',
+                subscribeText: 'Получайте специальные предложения и новости сервиса',
+            })
+    .header-footer-menu.header-footer-menu-header.header-footer-menu-shadow   
+        +copyright-bar({text: 'Copyright © 2018 Toxin отель. Все права зачищены.'})
+
+
+
+  
+
+
+
+
+    
+
+            

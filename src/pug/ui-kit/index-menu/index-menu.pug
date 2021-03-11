@@ -1,0 +1,8 @@
+mixin index_menu({ title, menu=[], }={})
+    .index-wrapper
+        h3= title    
+            nav
+                ul.index-menu
+                    each item in menu
+                        li.index-menu-item
+                            a(href= item.link) #{item.name}

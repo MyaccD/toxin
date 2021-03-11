@@ -1,0 +1,25 @@
+include ../logo/logo.pug
+include ../nav-menu/nav-menu.pug
+include ../header-btn/header-btn.pug
+include ../hamburger-menu/hamburger-menu
+
+mixin header-page({ hrefLogo, elementsMenu, hrefLogin, hrefRegister, btnNameLogin, btnNameRegister, register, userName, })
+    header.header
+        .container
+            .header__body
+                .header__logo
+                    +logo({ hrefLogo, })
+                .header__burger
+                    +hamburger-menu()
+                .header__menu    
+                    +menu({ elementsMenu, })
+                    .header__user-manage
+                        +header-btn({
+                            hrefLogin,
+                            hrefRegister,
+                            btnNameLogin,
+                            btnNameRegister,
+                            register,
+                            userName, 
+                            })
+                

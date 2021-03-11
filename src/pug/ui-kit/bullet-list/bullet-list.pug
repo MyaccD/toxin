@@ -1,0 +1,5 @@
+mixin bullet-list({ bulletList=[], }={})    
+    .bullet-list
+        ul.bullet-list__list
+            each item in bulletList
+                li.bullet-list__item #{item}

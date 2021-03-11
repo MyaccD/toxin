@@ -1,0 +1,7 @@
+mixin header-btn({ register=false, hrefLogin='/mock-address/change-me/', hrefRegister='/mock-address/change-me/', btnNameLogin='Войти', btnNameRegister='Зарегистрироваться', userName='Юлий Цезарь', }={})
+    if register
+        a.user-name= userName
+    else
+        a.login(href=hrefLogin)= btnNameLogin
+        a.register(href=hrefRegister)= btnNameRegister
+
